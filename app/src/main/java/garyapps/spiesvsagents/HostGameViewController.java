@@ -32,6 +32,12 @@ public class HostGameViewController extends RxViewController {
         bindObservables();
     }
 
+    @Override
+    public void onViewControllerResumed() {
+        super.onViewControllerResumed();
+        bindObservables();
+    }
+
     private void bindObservables() {
         addDisposable(
                 RxView.clicks(startGame)
