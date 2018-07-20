@@ -1,4 +1,4 @@
-package garyapps.spiesvsagents;
+package garyapps.spiesvsagents.ViewControllers;
 
 import java.util.ArrayList;
 
@@ -26,9 +26,16 @@ public abstract class RxViewController extends ViewController {
     }
 
     @Override
+    public void onViewControllerLoaded() {
+        super.onViewControllerLoaded();
+        bindObservables();
+    }
+
+    @Override
     public void onViewControllerResumed() {
         super.onViewControllerResumed();
         disposables = new ArrayList<>();
+        bindObservables();
     }
 
     @Override
@@ -50,4 +57,6 @@ public abstract class RxViewController extends ViewController {
             d.dispose();
         }
     }
+
+    abstract protected void bindObservables();
 }
