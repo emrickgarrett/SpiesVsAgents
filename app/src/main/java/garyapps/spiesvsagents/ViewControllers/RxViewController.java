@@ -1,5 +1,7 @@
 package garyapps.spiesvsagents.ViewControllers;
 
+import android.support.annotation.CallSuper;
+
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
@@ -12,7 +14,6 @@ public abstract class RxViewController extends ViewController {
 
     public RxViewController(SingleActivity context) {
         super(context);
-        disposables = new ArrayList<>();
     }
 
     protected void addDisposable(Disposable disposable) {
@@ -26,12 +27,20 @@ public abstract class RxViewController extends ViewController {
     }
 
     @Override
+    @CallSuper
+    protected void inflateView() {
+        disposables = new ArrayList<>();
+    }
+
+    @Override
+    @CallSuper
     public void onViewControllerLoaded() {
         super.onViewControllerLoaded();
         bindObservables();
     }
 
     @Override
+    @CallSuper
     public void onViewControllerResumed() {
         super.onViewControllerResumed();
         disposables = new ArrayList<>();
@@ -39,6 +48,7 @@ public abstract class RxViewController extends ViewController {
     }
 
     @Override
+    @CallSuper
     public void onViewControllerPaused() {
         super.onViewControllerPaused();
         destroyDisposables();
@@ -46,6 +56,7 @@ public abstract class RxViewController extends ViewController {
     }
 
     @Override
+    @CallSuper
     public void onViewControllerDestroyed() {
         super.onViewControllerDestroyed();
         destroyDisposables();
@@ -53,6 +64,8 @@ public abstract class RxViewController extends ViewController {
     }
 
     private void destroyDisposables() {
+        if(disposables == null) { return; }
+
         for(Disposable d : disposables) {
             d.dispose();
         }

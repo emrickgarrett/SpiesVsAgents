@@ -23,6 +23,7 @@ public class JoinGameViewController extends RxViewController {
 
     @Override
     protected void inflateView() {
+        super.inflateView();
         this.view = context.getLayoutInflater().inflate(R.layout.view_join_game, null);
         ButterKnife.bind(this, this.view);
     }

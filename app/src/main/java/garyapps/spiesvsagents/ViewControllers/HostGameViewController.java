@@ -22,6 +22,7 @@ public class HostGameViewController extends RxViewController {
 
     @Override
     protected void inflateView() {
+        super.inflateView();
         this.view = context.getLayoutInflater().inflate(R.layout.view_host_game, null);
         ButterKnife.bind(this, this.view);
     }

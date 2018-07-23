@@ -7,7 +7,6 @@ import emrickgj.saa.SingleActivity;
 import garyapps.spiesvsagents.ViewControllers.HomeViewController;
 
 public class MainActivity extends SingleActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

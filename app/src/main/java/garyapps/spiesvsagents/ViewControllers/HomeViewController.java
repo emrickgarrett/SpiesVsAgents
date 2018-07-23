@@ -24,6 +24,7 @@ public class HomeViewController extends RxViewController {
 
     @Override
     protected void inflateView() {
+        super.inflateView();
         this.view = context.getLayoutInflater().inflate(R.layout.view_home, null);
         ButterKnife.bind(this, this.view);
     }
